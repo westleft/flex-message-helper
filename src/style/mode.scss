@@ -1,0 +1,18 @@
+// 一般模式
+$default_background: #F5F6FA;
+$default_text: #666666;
+
+// 黑暗模式
+$dark_background: #222531;
+$dark_text: #ffffff;
+
+
+html {
+  --background: #{$default_background};
+  --text: #{$default_text};
+}
+
+html[data-theme="dark"] {
+  --background: #{$dark_background};
+  --text: #{$dark_text};
+}
