@@ -9,7 +9,7 @@ const percent = inject("percent") as Ref<number>;
   <div id="progress-bar">
     <div class="bar">
       <div
-        v-for="(item, index) in [0, 50, 100]"
+        v-for="(item, index) in [0, 49, 99]"
         :key="index"
         :class="['bar-circle', { 'bar-done': item >= percent }]"
       >

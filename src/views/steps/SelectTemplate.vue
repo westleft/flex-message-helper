@@ -1,12 +1,23 @@
 <script setup lang="ts">
+import { inject, ref } from "vue";
+import type { Ref } from "vue";
+
+const currentPage = inject("currentPage") as Ref<number>;
+const percent = inject("percent") as Ref<number>;
+
+const nextPage = () => {
+  currentPage.value = 2;
+  // percent.value = 50
+}
+
 </script>
 
 <template>
   <div id="select-template">
     <h1 class="select-title">STEP1. 請選擇樣式</h1>
     <ul class="list">
-      <li class="list-item" v-for="i in 3" :key="i">
-        <label for="fff" class="list-item-label">
+      <li class="list-item" v-for="i in 2" :key="i">
+        <label :for="i" class="list-item-label">
           <div class="list-item-container">
             <div class="list-item-text-box">
               <p class="list-item-text">Brown Grand Hotel</p>
@@ -27,11 +38,17 @@
               </div>
             </div>
           </div>
-          <input id="fff" name="radio" type="radio" checked />
+          <div class="input-container">
+            <p class="input-text">Hotel 樣式</p>
+            <input :id="i" name="radio" type="radio" checked />
+          </div>
         </label>
-          
       </li>
     </ul>
+
+    <div class="select-buttons">
+      <button class="next-button" @click="nextPage">下一步</button>
+    </div>
   </div>
 </template>
 
@@ -93,8 +110,27 @@
           }
         }
       }
+
+      .input-container {
+        @include flex();
+        width: 100%;
+        padding-top: 12px;
+        .input-text {
+          padding-right: 8px;
+        }
+      }
     }
   }
 }
 
+.select-buttons {
+  @include flex(flex-end, flex-end);
+  width: 100%;
+  padding-top: 10%;
+  .next-button {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px 16px;
+  }
+}
 </style>
